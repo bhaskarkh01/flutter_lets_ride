@@ -13,18 +13,24 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          color: const Color.fromARGB(255, 238, 213, 121),
           height: _deviceHeight,
           width: _deviceWidth,
           padding: EdgeInsets.symmetric(
             horizontal: _deviceWidth * 0.05,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Stack(
             children: [
-              _pageTitle(),
-              _bookRideWidget(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _pageTitle(),
+                  _bookRideWidget(),
+                ],
+              ),
+              Align(child: _autoImageWidget()),
             ],
           ),
         ),
@@ -37,7 +43,7 @@ class HomePage extends StatelessWidget {
       "#LetsGo",
       style: TextStyle(
         fontSize: 75,
-        color: Colors.white,
+        color: Colors.black,
         fontWeight: FontWeight.w800,
       ),
     );
@@ -45,12 +51,30 @@ class HomePage extends StatelessWidget {
 
   Widget _autoImageWidget() {
     return Container(
+      height: _deviceHeight * 0.45,
+      width: _deviceWidth * 0.90,
       decoration: const BoxDecoration(
-        color: Color.fromARGB(255, 238, 213, 121),
+        //color: Color.fromARGB(255, 206, 175, 161),
         image: DecorationImage(
           fit: BoxFit.contain,
           image: AssetImage("assets/images/auto.png"),
         ),
+      ),
+    );
+  }
+
+  Widget _bookRideWidget() {
+    return Container(
+      height: _deviceHeight * 0.25,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _destinationDropDownWidget(),
+          _travellersInformationWidget(),
+          _rideButton(),
+        ],
       ),
     );
   }
@@ -87,22 +111,6 @@ class HomePage extends StatelessWidget {
           width: _deviceWidth * 0.40,
         ),
       ],
-    );
-  }
-
-  Widget _bookRideWidget() {
-    return Container(
-      height: _deviceHeight * 0.25,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          _destinationDropDownWidget(),
-          _travellersInformationWidget(),
-          _rideButton(),
-        ],
-      ),
     );
   }
 
