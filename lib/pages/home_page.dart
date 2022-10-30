@@ -24,9 +24,7 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _pageTitle(),
-              _autoImageWidget(),
-              _destinationDropDownWidget(),
-              _noOfPassengersWidget(),
+              _bookRideWidget(),
             ],
           ),
         ),
@@ -74,16 +72,36 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _noOfPassengersWidget() {
-    return CustomDropDownWidgetButtonClass(
-      values: const [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
+  Widget _travellersInformationWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        CustomDropDownWidgetButtonClass(
+          values: const ["1", "2", "3", "4", "5"],
+          width: _deviceWidth * 0.45,
+        ),
+        CustomDropDownWidgetButtonClass(
+          values: const ["Economy", "Business", "First", "Private"],
+          width: _deviceWidth * 0.40,
+        ),
       ],
-      width: _deviceWidth * 0.45,
+    );
+  }
+
+  Widget _bookRideWidget() {
+    return Container(
+      height: _deviceHeight * 0.25,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _destinationDropDownWidget(),
+          _travellersInformationWidget()
+        ],
+      ),
     );
   }
 }
