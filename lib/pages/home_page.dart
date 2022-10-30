@@ -99,8 +99,30 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _destinationDropDownWidget(),
-          _travellersInformationWidget()
+          _travellersInformationWidget(),
+          _rideButton(),
         ],
+      ),
+    );
+  }
+
+  Widget _rideButton() {
+    return Container(
+      margin: EdgeInsets.only(bottom: _deviceHeight * 0.01),
+      width: _deviceWidth,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: MaterialButton(
+        onPressed: (() {}),
+        child: const Text(
+          "Let's Go",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        // color: Colors.white,
       ),
     );
   }
