@@ -14,8 +14,12 @@ class HomePage extends StatelessWidget {
         child: Container(
           height: _deviceHeight,
           width: _deviceWidth,
-          color: Colors.red,
-          child: _pageTitle(),
+          //color: Colors.red,
+          padding: EdgeInsets.symmetric(
+            horizontal: _deviceWidth * 0.05,
+            //vertical: 25,
+          ),
+          child: _destinationDropDownWidget(),
         ),
       ),
     );
@@ -40,6 +44,28 @@ class HomePage extends StatelessWidget {
           fit: BoxFit.contain,
           image: AssetImage("assets/images/auto.png"),
         ),
+      ),
+    );
+  }
+
+  Widget _destinationDropDownWidget() {
+    List<DropdownMenuItem<String>> _items = [
+      "Yelahanka",
+      "BTM",
+      "Malleshwaram",
+      "Basavanagudi",
+    ].map(
+      (e) {
+        return DropdownMenuItem(
+          child: Text(e),
+          value: e,
+        );
+      },
+    ).toList();
+    return Container(
+      child: DropdownButton<String>(
+        items: _items,
+        onChanged: (_) {},
       ),
     );
   }
