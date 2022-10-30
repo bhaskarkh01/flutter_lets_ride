@@ -6,7 +6,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pageTitle(),
+      body: SafeArea(
+        child: Container(
+          child: _pageTitle(),
+        ),
+      ),
     );
   }
 
@@ -16,6 +20,7 @@ class HomePage extends StatelessWidget {
       style: TextStyle(
         fontSize: 50,
         color: Colors.white,
+        fontWeight: FontWeight.w800,
       ),
     );
   }
