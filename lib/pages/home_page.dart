@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lets_ride/widgets/custom_dropdown_button.dart';
 
 class HomePage extends StatelessWidget {
   late double _deviceHeight, _deviceWidth;
@@ -25,6 +26,7 @@ class HomePage extends StatelessWidget {
               _pageTitle(),
               _autoImageWidget(),
               _destinationDropDownWidget(),
+              _noOfPassengersWidget(),
             ],
           ),
         ),
@@ -56,40 +58,32 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _destinationDropDownWidget() {
-    List<String> _items = [
-      "Yelahanka",
-      "BTM",
-      "Malleshwaram",
-      "Basavanagudi",
-      "Indiranagar",
-      "Rajajinagar",
-      "Hebbal",
-      "Marathahalli",
-      "Whitefield",
-    ];
-
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.05),
+    return CustomDropDownWidgetButtonClass(
+      values: const [
+        "Yelahanka",
+        "BTM",
+        "Malleshwaram",
+        "Basavanagudi",
+        "Indiranagar",
+        "Rajajinagar",
+        "Hebbal",
+        "Marathahalli",
+        "Whitefield",
+      ],
       width: _deviceWidth,
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(53, 53, 53, 1.0),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: DropdownButton(
-        value: _items.first,
-        onChanged: (_) {},
-        items: _items.map(
-          (e) {
-            return DropdownMenuItem(
-              child: Text(e),
-              value: e,
-            );
-          },
-        ).toList(),
-        underline: Container(),
-        dropdownColor: Color.fromRGBO(53, 53, 53, 1.0),
-        style: const TextStyle(color: Colors.white),
-      ),
+    );
+  }
+
+  Widget _noOfPassengersWidget() {
+    return CustomDropDownWidgetButtonClass(
+      values: const [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+      ],
+      width: _deviceWidth * 0.45,
     );
   }
 }
